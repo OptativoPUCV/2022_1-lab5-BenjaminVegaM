@@ -67,3 +67,8 @@ treemap.c:49:12: note: previous definition of 'newPair' was here
             ^~~~~~~
 Compilation failed
 16468a0
+ju., 21 de abr. de 2022 11:50:16: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|0
+25952d1
