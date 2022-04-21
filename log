@@ -90,3 +90,8 @@ treemap.c:49:12: note: previous definition of 'aux' was here
             ^~~
 Compilation failed
 505fa42
+ju., 21 de abr. de 2022 11:54:49: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  0|0
+aa0a09f
