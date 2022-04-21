@@ -100,3 +100,18 @@ ju., 21 de abr. de 2022 11:55:20:
  1 file changed, 2 insertions(+), 2 deletions(-)
  tests:  0|0
 b066c35
+ju., 21 de abr. de 2022 11:58:41: 
+ treemap.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+In file included from test.c:4:0:
+treemap.c: In function 'insertTreeMap':
+treemap.c:59:27: error: 'newPair' undeclared (first use in this function)
+     tree->current->pair = newPair;
+                           ^~~~~~~
+treemap.c:59:27: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:55:16: error: unused variable 'newNode' [-Werror=unused-variable]
+     TreeNode * newNode = createTreeNode(key, value);
+                ^~~~~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+9ca2453
