@@ -2,3 +2,14 @@ ju., 21 de abr. de 2022 11:30:05:
  tests:  1|8
 total_score: 0/70
 77d06cb
+ju., 21 de abr. de 2022 11:30:30: 
+ treemap.c | 18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+In file included from test.c:4:0:
+treemap.c: In function 'createTreeMap':
+treemap.c:41:5: error: 'new' undeclared (first use in this function)
+     new->lower_than = lower_than;
+     ^~~
+treemap.c:41:5: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+6eb49f1
