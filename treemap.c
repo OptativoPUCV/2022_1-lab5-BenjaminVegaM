@@ -272,12 +272,19 @@ Pair * nextTreeMap(TreeMap * tree) {
     }
     else
     {
-        TreeNode * aux = tree->current->parent;
-        while(tree->lower_than(tree->current->pair->key, aux->pair->key) == 1)
+        if(tree->current->parent != NULL)
         {
-            aux = aux->parent;
+            TreeNode * aux = tree->current->parent;
+            while(tree->lower_than(tree->current->pair->key, aux->pair->key) == 1)
+            {
+                aux = aux->parent;
+            }
+            tree->current = aux;
         }
-        tree->current = aux;
+        else
+        {
+            return NULL;
+        }
     }
     return tree->current->pair;
 }
