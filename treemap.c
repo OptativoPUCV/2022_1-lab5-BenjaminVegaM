@@ -275,7 +275,7 @@ Pair * nextTreeMap(TreeMap * tree) {
     {
         printf("No tiene R\n");
         TreeNode * aux = tree->current->parent;
-        while(0)
+        while(1)
         {
             printf("O");
             if(tree->current->parent != NULL)
