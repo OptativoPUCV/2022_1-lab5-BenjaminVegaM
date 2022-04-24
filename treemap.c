@@ -286,9 +286,9 @@ Pair * nextTreeMap(TreeMap * tree) {
                     printf("\nTiene padre\n");
                     if(tree->lower_than(tree->current->pair->key, aux->pair->key) == 1)
                     {
-                        printf("Current > aux\n");
                         break;
                     }
+                    printf("Current > aux\n");
                     aux = aux->parent;
                 }
                 else
