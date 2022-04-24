@@ -415,3 +415,29 @@ Sun, 24 Apr 2022 16:03:34:
  tests:  21|3
 total_score: 45/70
 0b588cc
+Sun, 24 Apr 2022 16:06:56: 
+ treemap.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+In file included from test.c:4:
+treemap.c: In function 'nextTreeMap':
+treemap.c:269:31: error: format '%i' expects argument of type 'int', but argument 2 has type 'void *' [-Werror=format=]
+  269 |     printf("tree-> current = %i\n", tree->current->pair->key);
+      |                              ~^     ~~~~~~~~~~~~~~~~~~~~~~~~
+      |                               |                        |
+      |                               int                      void *
+      |                              %p
+treemap.c:283:28: error: format '%i' expects argument of type 'int', but argument 2 has type 'void *' [-Werror=format=]
+  283 |             printf("Aux = %i\n", aux->pair->key);
+      |                           ~^     ~~~~~~~~~~~~~~
+      |                            |              |
+      |                            int            void *
+      |                           %p
+treemap.c:287:32: error: format '%i' expects argument of type 'int', but argument 2 has type 'void *' [-Werror=format=]
+  287 |                 printf("Aux = %i\n", aux->pair->key);
+      |                               ~^     ~~~~~~~~~~~~~~
+      |                                |              |
+      |                                int            void *
+      |                               %p
+cc1.exe: all warnings being treated as errors
+Compilation failed
+78b5c8b
