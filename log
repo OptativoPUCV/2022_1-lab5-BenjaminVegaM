@@ -279,3 +279,9 @@ treemap.c:86:20: error: variable 'aux1' set but not used [-Werror=unused-but-set
 cc1.exe: all warnings being treated as errors
 Compilation failed
 813b13f
+Sun, 24 Apr 2022 14:34:07: 
+ treemap.c | 47 ++++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 40 insertions(+), 7 deletions(-)
+ tests:  17|4
+total_score: 35/70
+7a7882e
