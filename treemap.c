@@ -266,31 +266,23 @@ Pair * firstTreeMap(TreeMap * tree) {
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
-    printf("tree-> current = %p\n", tree->current->pair->key);
     if(tree->current->right != NULL)
     {
-        printf("Si tiene hijo derecho\n");
         tree->current = minimum(tree->current->right);
     }
     else
     {
-        printf("No tiene hijo derecho\n");
         if(tree->current->parent != NULL)
         {
-            printf("Tiene padre\n");
             TreeNode * aux = tree->current->parent;
-
-            printf("Aux = %p\n", aux->pair->key);
-            while(tree->lower_than(tree->current->pair->key, aux->pair->key) == 1)
+            while(tree->lower_than(tree->current->pair->key, aux->pair->key) == 0)
             {
                 aux = aux->parent;
-                printf("Aux = %p\n", aux->pair->key);
             }
             tree->current = aux;
         }
         else
         {
-            printf("No tiene padre\n");
             return NULL;
         }
     }
