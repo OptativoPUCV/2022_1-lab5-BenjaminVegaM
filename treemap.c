@@ -141,25 +141,44 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             else if(node->left != NULL && node->right != NULL)
             {
                 TreeNode * aux = node->left;
+                int i = 0;
 
                 while(aux->right != NULL)
-                {                
+                {
+                    i++;
                     aux = aux->right;
                 }
                 node->pair->key = aux->pair->key;
                 node->pair->value = aux->pair->value;
 
-                if(aux->left == NULL)
+                if(i == 0)
                 {
-                    aux->parent->right = NULL;
+                    if(aux->left == NULL)
+                    {
+                        aux->parent->left = NULL;
+                    }
+                    else
+                    {
+                        aux->parent->left = aux->left;
+                        aux->left->parent = aux->parent;
+                    }
+                    free(aux);
+                    return;
                 }
                 else
                 {
-                    aux->parent->right = aux->left;
-                    aux->left->parent = aux->parent;
+                    if(aux->left == NULL)
+                    {
+                        aux->parent->right = NULL;
+                    }
+                    else
+                    {
+                        aux->parent->right = aux->left;
+                        aux->left->parent = aux->parent;
+                    }
+                    free(aux);
+                    return;
                 }
-                free(aux);
-                return;
             }
             else
             {
