@@ -277,6 +277,7 @@ Pair * nextTreeMap(TreeMap * tree) {
             TreeNode * aux = tree->current->parent;
             while(tree->lower_than(aux->pair->key, tree->current->pair->key) == 1)
             {
+                printf("O");
                 aux = aux->parent;
             }
             tree->current = aux;
