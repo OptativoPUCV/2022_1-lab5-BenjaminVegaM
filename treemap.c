@@ -272,20 +272,20 @@ Pair * nextTreeMap(TreeMap * tree) {
     }
     else
     {
-        if(tree->current->parent != NULL)
+        TreeNode * aux = tree->current->parent;
+        while(0)
         {
-            TreeNode * aux = tree->current->parent;
-            while(tree->current->parent != NULL && tree->lower_than(aux->pair->key, tree->current->pair->key) == 1)
+            printf("O");
+            if(tree->current->parent != NULL)
             {
-                printf("O");
+                if(tree->lower_than(aux->pair->key, tree->current->pair->key) == 0)
+                {
+                    break;
+                }
                 aux = aux->parent;
-            }
-            tree->current = aux;
+            }    
         }
-        else
-        {
-            return NULL;
-        }
+        tree->current = aux;
     }
     return tree->current->pair;
 }
