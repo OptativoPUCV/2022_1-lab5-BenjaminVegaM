@@ -82,14 +82,12 @@ void removeNode(TreeMap * tree, TreeNode* node) {
 
     if(node->parent != NULL)
     {
-        TreeNode * aux1;
+        
+        TreeNode * aux1 = node->parent->right;
+
         if(tree->lower_than(node->pair->key, node->parent->pair->key) == 1)
         {
             aux1 = node->parent->left;
-        }
-        else
-        {
-            aux1 = node->parent->right;
         }
 
         
