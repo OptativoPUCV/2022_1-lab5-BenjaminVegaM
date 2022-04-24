@@ -101,6 +101,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             {
                 TreeNode * aux = node->left;
 
+                /*
                 while(aux->right != NULL)
                 {                
                     aux = aux->right;
@@ -119,6 +120,12 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 }
                 free(aux);
                 return;
+                */
+
+                aux = nodeminimum(node->right);
+                node->pair->key = aux->pair->key;
+                node->pair->value = aux->pair->value;
+                removeNode(tree, aux);
             }
             // No tiene hijos
             else
@@ -138,7 +145,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 node->parent->right = node->right;
                 node->right->parent = node->parent;
             }
-            else if(node->left != NULL && node->right != NULL)
+            /*else if(node->left != NULL && node->right != NULL)
             {
                 TreeNode * aux = node->left;
                 int i = 0;
@@ -179,6 +186,36 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                     free(aux);
                     return;
                 }
+            }*/
+            else if(node->left != NULL && node->right != NULL)
+            {
+                TreeNode * aux = node->left;
+
+                /*
+                while(aux->right != NULL)
+                {                
+                    aux = aux->right;
+                }
+                node->pair->key = aux->pair->key;
+                node->pair->value = aux->pair->value;
+
+                if(aux->left == NULL)
+                {
+                    aux->parent->right = NULL;
+                }
+                else
+                {
+                    aux->parent->right = aux->left;
+                    aux->left->parent = aux->parent;
+                }
+                free(aux);
+                return;
+                */
+
+                aux = nodeminimum(node->right);
+                node->pair->key = aux->pair->key;
+                node->pair->value = aux->pair->value;
+                removeNode(tree, aux);
             }
             else
             {

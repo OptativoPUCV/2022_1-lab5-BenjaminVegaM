@@ -350,3 +350,21 @@ Sun, 24 Apr 2022 15:33:27:
  tests:  17|4
 total_score: 35/70
 bc8e7c4
+Sun, 24 Apr 2022 15:39:57: 
+ treemap.c | 39 ++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 38 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function 'removeNode':
+treemap.c:125:23: error: implicit declaration of function 'nodeminimum'; did you mean 'minimum'? [-Werror=implicit-function-declaration]
+  125 |                 aux = nodeminimum(node->right);
+      |                       ^~~~~~~~~~~
+      |                       minimum
+treemap.c:125:21: error: assignment to 'TreeNode *' from 'int' makes pointer from integer without a cast [-Werror=int-conversion]
+  125 |                 aux = nodeminimum(node->right);
+      |                     ^
+treemap.c:215:21: error: assignment to 'TreeNode *' from 'int' makes pointer from integer without a cast [-Werror=int-conversion]
+  215 |                 aux = nodeminimum(node->right);
+      |                     ^
+cc1.exe: all warnings being treated as errors
+Compilation failed
+b8fee65
