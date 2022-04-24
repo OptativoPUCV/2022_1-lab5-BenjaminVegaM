@@ -266,7 +266,7 @@ Pair * firstTreeMap(TreeMap * tree) {
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
-    printf("tree-> current = %i\n", tree->current->pair->key);
+    printf("tree-> current = %p\n", tree->current->pair->key);
     if(tree->current->right != NULL)
     {
         printf("Si tiene hijo derecho\n");
@@ -280,11 +280,11 @@ Pair * nextTreeMap(TreeMap * tree) {
             printf("Tiene padre\n");
             TreeNode * aux = tree->current->parent;
 
-            printf("Aux = %i\n", aux->pair->key);
+            printf("Aux = %p\n", aux->pair->key);
             while(tree->lower_than(tree->current->pair->key, aux->pair->key) == 1)
             {
                 aux = aux->parent;
-                printf("Aux = %i\n", aux->pair->key);
+                printf("Aux = %p\n", aux->pair->key);
             }
             tree->current = aux;
         }
