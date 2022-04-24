@@ -224,3 +224,14 @@ treemap.c:85:20: error: variable 'auxNode' set but not used [-Werror=unused-but-
 cc1.exe: all warnings being treated as errors
 Compilation failed
 8f8e20e
+Sun, 24 Apr 2022 14:25:53: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function 'removeNode':
+treemap.c:85:20: error: variable 'auxNode' set but not used [-Werror=unused-but-set-variable]
+   85 |         TreeNode * auxNode = node->left;
+      |                    ^~~~~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+a60a9f5
