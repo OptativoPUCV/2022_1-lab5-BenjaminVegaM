@@ -286,7 +286,14 @@ Pair * nextTreeMap(TreeMap * tree) {
                     printf("Current > aux\n");
                     break;
                 }
-                aux = aux->parent;
+                if(tree->current->parent != NULL)
+                {
+                    aux = aux->parent;
+                }
+                else
+                {
+                    return NULL;
+                }
             }
             else
             {
