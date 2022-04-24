@@ -80,8 +80,8 @@ TreeNode * minimum(TreeNode * x){
 
 void removeNode(TreeMap * tree, TreeNode* node) {
 
-    if(node->parent != NULL)
-    {
+    //if(node->parent != NULL)
+    //{
         if(tree->lower_than(node->pair->key, node->parent->pair->key) == 1)
         {
             // Solo tiene hijo izquierdo
@@ -164,8 +164,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 node->parent->right = NULL;
             }
         }
-    }
-
+    //}
     free(node);
 }
 
