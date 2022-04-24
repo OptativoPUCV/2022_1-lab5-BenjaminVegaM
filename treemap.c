@@ -283,7 +283,11 @@ Pair * nextTreeMap(TreeMap * tree) {
                     break;
                 }
                 aux = aux->parent;
-            }    
+            }
+            else
+            {
+                return NULL;
+            }
         }
         tree->current = aux;
     }
