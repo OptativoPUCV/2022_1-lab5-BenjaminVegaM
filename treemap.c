@@ -84,16 +84,19 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     {
         if(tree->lower_than(node->pair->key, node->parent->pair->key) == 1)
         {
+            // Solo tiene hijo izquierdo
             if(node->left != NULL && node->right == NULL)
             {
                 node->parent->left = node->left;
                 node->left->parent = node->parent;
             }
+            // Solo tiene hijo derecho
             else if(node->left == NULL && node->right != NULL )
             {
                 node->parent->left = node->right;
                 node->right->parent = node->parent;
             }
+            // Tiene ambos hijos
             else if(node->left != NULL && node->right != NULL)
             {
                 TreeNode * aux = node->left;
@@ -105,17 +108,18 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 node->pair->key = aux->pair->key;
                 node->pair->value = aux->pair->value;
 
-                if(aux->left != NULL)
+                if(aux->left == NULL)
                 {
-                    aux->parent->left = aux->left;
+                    aux->parent->right = NULL;
                 }
                 else
                 {
-                    aux->parent->left = NULL;
+                    aux->parent->right = aux->left;
                 }
                 free(aux);
                 return;
             }
+            // No tiene hijos
             else
             {
                 node->parent->left = NULL;
@@ -144,13 +148,13 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 node->pair->key = aux->pair->key;
                 node->pair->value = aux->pair->value;
 
-                if(aux->left != NULL)
+                if(aux->left == NULL)
                 {
-                    aux->parent->left = aux->left;
+                    aux->parent->right = NULL;
                 }
                 else
                 {
-                    aux->parent->left = NULL;
+                    aux->parent->right = aux->left;
                 }
                 free(aux);
                 return;
