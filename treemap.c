@@ -155,6 +155,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
                 else
                 {
                     aux->parent->right = aux->left;
+                    aux->left->parent = aux->parent;
                 }
                 free(aux);
                 return;
