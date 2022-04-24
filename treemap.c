@@ -82,44 +82,52 @@ void removeNode(TreeMap * tree, TreeNode* node) {
 
     if(node->parent != NULL)
     {
+        TreeNode * auxNode;
         if(tree->lower_than(node->pair->key, node->parent->pair->key) == 1)
         {
-            if(node->left != NULL && node->right == NULL)
-            {
-                node->parent->left = node->left;
-                node->left->parent = node->parent;
-            }
-            else if(node->left == NULL && node->right != NULL )
-            {
-                node->parent->left = node->right;
-                node->right->parent = node->parent;
-            }
-            else if(node->left != NULL && node->right != NULL)
-            {
-                TreeNode * aux = node->left;
+            auxNode = node->parent->left;
+        }
+        else
+        {
+            auxNode = node->parent->right;
+        }
 
-                while(aux->right != NULL)
-                {                
-                    aux = aux->right;
-                }
-                node->pair->key = aux->pair->key;
-                node->pair->value = aux->pair->value;
+        
+        if(node->left != NULL && node->right == NULL)
+        {
+            auxNode = node->left;
+            node->left->parent = node->parent;
+        }
+        else if(node->left == NULL && node->right != NULL )
+        {
+            auxNode = node->right;
+            node->right->parent = node->parent;
+        }
+        else if(node->left != NULL && node->right != NULL)
+        {
+            TreeNode * aux = node->left;
 
-                if(aux->left != NULL)
-                {
-                    aux->parent->right = aux->left;
-                }
-                else
-                {
-                    aux->parent->right = NULL;
-                }
-                free(aux);
-                return;
+            while(aux->right != NULL)
+            {                
+                aux = aux->right;
+            }
+            node->pair->key = aux->pair->key;
+            node->pair->value = aux->pair->value;
+
+            if(aux->left != NULL)
+            {
+                aux->parent->right = aux->left;
             }
             else
             {
-                node->parent->left = NULL;
+                aux->parent->right = NULL;
             }
+            free(aux);
+            return;
+        }
+        else
+        {
+            auxNode = NULL;
         }
     }
 
