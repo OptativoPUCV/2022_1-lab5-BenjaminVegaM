@@ -48,7 +48,6 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
     Pair * aux = searchTreeMap(tree, key);
-    printf("asdsabduhjasnd\n");
 
     if(aux != NULL) return;
 
@@ -100,30 +99,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             // Tiene ambos hijos
             else if(node->left != NULL && node->right != NULL)
             {
-                TreeNode * aux = node->left;
-
-                /*
-                while(aux->right != NULL)
-                {                
-                    aux = aux->right;
-                }
-                node->pair->key = aux->pair->key;
-                node->pair->value = aux->pair->value;
-
-                if(aux->left == NULL)
-                {
-                    aux->parent->right = NULL;
-                }
-                else
-                {
-                    aux->parent->right = aux->left;
-                    aux->left->parent = aux->parent;
-                }
-                free(aux);
-                return;
-                */
-
-                aux = minimum(node->right);
+                TreeNode * aux = minimum(node->right);
                 node->pair->key = aux->pair->key;
                 node->pair->value = aux->pair->value;
                 removeNode(tree, aux);
