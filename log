@@ -549,3 +549,9 @@ treemap.c:261:18: error: initialization of 'Pair *' from incompatible pointer ty
 cc1.exe: all warnings being treated as errors
 Compilation failed
 07a54f1
+Sun, 24 Apr 2022 21:43:16: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  25|3
+total_score: 50/70
+0168f42
