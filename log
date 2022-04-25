@@ -780,3 +780,23 @@ test.c:6:8: error: '_strdup2' defined but not used [-Werror=unused-function]
 cc1.exe: all warnings being treated as errors
 Compilation failed
 b41352f
+Mon, 25 Apr 2022 00:01:29: 
+ treemap.c | 9 ---------
+ 1 file changed, 9 deletions(-)
+test.c: In function 'nextTreeMap':
+test.c:503:5: error: 'main' is normally a non-static function [-Werror=main]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+test.c:606:1: error: expected declaration or statement at end of input
+  606 | }
+      | ^
+test.c:606: error: control reaches end of non-void function [-Werror=return-type]
+  606 | }
+      | 
+At top level:
+test.c:503:5: error: 'main' defined but not used [-Werror=unused-function]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+1eb5b99
