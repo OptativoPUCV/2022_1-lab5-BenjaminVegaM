@@ -262,7 +262,7 @@ Pair * upperBound(TreeMap * tree, void* key) {
     if(tree->current->left != NULL || tree->current->right != NULL)
     {
         aux = searchTreeMap(tree, key);
-        aux = tree->current;
+        aux = tree->current->pair;
         return aux;
     }
     else
