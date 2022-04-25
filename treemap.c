@@ -249,7 +249,6 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
         {
             aux = aux->right;
         }
-        
     }
     return NULL;
 }
@@ -293,7 +292,7 @@ Pair * nextTreeMap(TreeMap * tree) {
             while(1)
             {
                 printf("O");
-                if(aux->parent != NULL)
+                if(aux != NULL)
                 {
                     printf("\nTiene padre\n");
                     if(tree->lower_than(tree->current->pair->key, aux->pair->key) == 1)

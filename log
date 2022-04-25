@@ -567,3 +567,12 @@ Sun, 24 Apr 2022 21:45:43:
  tests:  25|3
 total_score: 50/70
 09976fa
+Sun, 24 Apr 2022 23:19:03: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+test.c:6:8: error: '_strdup' redeclared without dllimport attribute: previous dllimport ignored [-Werror=attributes]
+    6 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+4df009a
