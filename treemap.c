@@ -80,41 +80,54 @@ TreeNode * minimum(TreeNode * x){
 
 void removeNode(TreeMap * tree, TreeNode* node) {
 
-    TreeNode * son;
-        if(tree->lower_than(node->pair->key, node->parent->pair->key) == 1)
-        {
-            son = node->parent->left;
-        }
-        else
-        {
-            son = node->parent->right;
-        }
-        printf("%p\n", son->pair->key);
+    // Tiene ambos hijos
+    if(node->left != NULL && node->right != NULL)
+    {
+        TreeNode * aux = minimum(node->right);
+        node->pair->key = aux->pair->key;
+        node->pair->value = aux->pair->value;
+        removeNode(tree, aux);
+    }
+    else if(tree->lower_than(node->pair->key, node->parent->pair->key) == 1)
+    {
         // Solo tiene hijo izquierdo
         if(node->left != NULL && node->right == NULL)
         {
-            son = node->left;
+            node->parent->left = node->left;
             node->left->parent = node->parent;
         }
         // Solo tiene hijo derecho
         else if(node->left == NULL && node->right != NULL )
         {
-            son = node->right;
+            node->parent->left = node->right;
             node->right->parent = node->parent;
-        }
-        // Tiene ambos hijos
-        else if(node->left != NULL && node->right != NULL)
-        {
-            TreeNode * aux = minimum(node->right);
-            node->pair->key = aux->pair->key;
-            node->pair->value = aux->pair->value;
-            removeNode(tree, aux);
         }
         // No tiene hijos
         else
         {
-            son = NULL;
+            node->parent->left = NULL;
         }
+    }
+    else
+    {
+        // Solo tiene hijo izquierdo
+        if(node->left != NULL && node->right == NULL)
+        {
+            node->parent->right = node->left;
+            node->left->parent = node->parent;
+        }
+        // Solo tiene hijo derecho
+        else if(node->left == NULL && node->right != NULL )
+        {
+            node->parent->right = node->right;
+            node->right->parent = node->parent;
+        }
+        // No tiene hijos
+        else
+        {
+            node->parent->right = NULL;
+        }
+    }
 
     free(node);
 }
@@ -180,12 +193,6 @@ Pair * nextTreeMap(TreeMap * tree) {
     }
     else
     {
-        if(tree->current->right != NULL)
-    {
-        tree->current = minimum(tree->current->right);
-    }
-    else
-    {
         if(tree->current->parent != NULL)
         {
             TreeNode * aux = tree->current->parent;
@@ -201,7 +208,7 @@ Pair * nextTreeMap(TreeMap * tree) {
                     aux = aux->parent;
                 }
                 else
-                {
+                {                    
                     return NULL;
                 }
             }
