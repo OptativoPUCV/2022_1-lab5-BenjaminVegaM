@@ -294,9 +294,7 @@ Pair * nextTreeMap(TreeMap * tree) {
                 else
                 {
                     printf("\nNo tiene padre\n");
-                    tree->current = aux;
-                    nextTreeMap(tree);
-                    break;
+                    return NULL;
                 }
             }
             tree->current = aux;
