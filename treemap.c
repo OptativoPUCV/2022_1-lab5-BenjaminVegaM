@@ -80,118 +80,41 @@ TreeNode * minimum(TreeNode * x){
 
 void removeNode(TreeMap * tree, TreeNode* node) {
 
-    /*if(node->parent != NULL)
-    {*/
+    TreeNode * son;
         if(tree->lower_than(node->pair->key, node->parent->pair->key) == 1)
         {
-            // Solo tiene hijo izquierdo
-            if(node->left != NULL && node->right == NULL)
-            {
-                node->parent->left = node->left;
-                node->left->parent = node->parent;
-            }
-            // Solo tiene hijo derecho
-            else if(node->left == NULL && node->right != NULL )
-            {
-                node->parent->left = node->right;
-                node->right->parent = node->parent;
-            }
-            // Tiene ambos hijos
-            else if(node->left != NULL && node->right != NULL)
-            {
-                TreeNode * aux = minimum(node->right);
-                node->pair->key = aux->pair->key;
-                node->pair->value = aux->pair->value;
-                removeNode(tree, aux);
-            }
-            // No tiene hijos
-            else
-            {
-                node->parent->left = NULL;
-            }
+            son = node->parent->left;
         }
         else
         {
-            if(node->left != NULL && node->right == NULL)
-            {
-                node->parent->right = node->left;
-                node->left->parent = node->parent;
-            }
-            else if(node->left == NULL && node->right != NULL )
-            {
-                node->parent->right = node->right;
-                node->right->parent = node->parent;
-            }
-            /*else if(node->left != NULL && node->right != NULL)
-            {
-                TreeNode * aux = node->left;
-                int i = 0;
-
-                while(aux->right != NULL)
-                {
-                    i++;
-                    aux = aux->right;
-                }
-                node->pair->key = aux->pair->key;
-                node->pair->value = aux->pair->value;
-
-                if(i == 0)
-                {
-                    if(aux->left == NULL)
-                    {
-                        aux->parent->left = NULL;
-                    }
-                    else
-                    {
-                        aux->parent->left = aux->left;
-                        aux->left->parent = aux->parent;
-                    }
-                    free(aux);
-                    return;
-                }
-                else
-                {
-                    if(aux->left == NULL)
-                    {
-                        aux->parent->right = NULL;
-                    }
-                    else
-                    {
-                        aux->parent->right = aux->left;
-                        aux->left->parent = aux->parent;
-                    }
-                    free(aux);
-                    return;
-                }
-            }*/
-            else if(node->left != NULL && node->right != NULL)
-            {
-                TreeNode * aux = node->left;
-
-                aux = minimum(node->right);
-                node->pair->key = aux->pair->key;
-                node->pair->value = aux->pair->value;
-                removeNode(tree, aux);
-            }
-            else
-            {
-                node->parent->right = NULL;
-            }
+            son = node->parent->right;
         }
-    /*}
-    else if(node->parent == NULL)
-    {
-        if(node->left != NULL)
+        printf("%p\n", son->pair->key);
+        // Solo tiene hijo izquierdo
+        if(node->left != NULL && node->right == NULL)
         {
-            node->left->parent = NULL;
-            node->left = NULL;
+            son = node->left;
+            node->left->parent = node->parent;
         }
-        if(node->right != NULL)
+        // Solo tiene hijo derecho
+        else if(node->left == NULL && node->right != NULL )
         {
-            node->right->parent = NULL;
-            node->right = NULL;
+            son = node->right;
+            node->right->parent = node->parent;
         }
-    }*/
+        // Tiene ambos hijos
+        else if(node->left != NULL && node->right != NULL)
+        {
+            TreeNode * aux = minimum(node->right);
+            node->pair->key = aux->pair->key;
+            node->pair->value = aux->pair->value;
+            removeNode(tree, aux);
+        }
+        // No tiene hijos
+        else
+        {
+            son = NULL;
+        }
 
     free(node);
 }
