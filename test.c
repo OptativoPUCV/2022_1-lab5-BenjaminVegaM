@@ -3,7 +3,7 @@
 #include <string.h>
 #include "treemap.c"
 
-char * _strdup2(const char * str) {
+char * _strdup(const char * str) {
     char * aux = (char *)malloc(strlen(str) + 1);
     strcpy(aux, str);
     return aux;
@@ -87,7 +87,7 @@ int create_test1(){
         return 0;
     } else
         ok_msg("root==NULL");
-    
+
 
     int i=10,j=15;
     if(t->lower_than != lower_than_int || t->lower_than(&i,&j) !=1 ) {
@@ -100,7 +100,7 @@ int create_test1(){
 
 int search_test1(TreeMap* tree){ //key se encuentra en raiz
     int key=5239;
-    
+
     Pair* p=searchTreeMap(tree, &key);
     if(p!=NULL && ((Palabra*)p->value)->id==5239)
         ok_msg("encuentra dato con clave 5239");
@@ -108,7 +108,7 @@ int search_test1(TreeMap* tree){ //key se encuentra en raiz
         err_msg("no encuentra dato con clave 5239");
         return 0;
     }
-    
+
     if(tree->current != tree->root){
         err_msg("no actualiza current (5329)");
         return 0;
@@ -126,7 +126,7 @@ int search_test2(TreeMap* tree){ //key en root->right
         err_msg("no encuentra dato con clave 8213");
         return 0;
     }
-    
+
 
     if(tree->current != tree->root->right){
         err_msg("no actualiza current correctamente (8213)");
@@ -146,7 +146,7 @@ int search_test3(TreeMap* tree){ //key en root->right->left
         err_msg("no encuentra dato con clave 6980");
         return 0;
     }
-    
+
 
     if(tree->current != tree->root->right->left){
         err_msg("no actualiza current correctamente");
@@ -159,7 +159,7 @@ int search_test3(TreeMap* tree){ //key en root->right->left
 int search_test4(TreeMap* tree){ //key no existe
     int key=7010;
     Pair* p = searchTreeMap(tree, &key);
-    
+
     if(p==NULL) {
         sprintf(msg, "retorna NULL: search(key=%d)",key);
         ok_msg(msg);
@@ -190,7 +190,7 @@ int insert_test2(){
     Palabra* p = creaPalabra(900,_strdup("maicol"));
     info_msg("insertando dato con clave 900");
     insertTreeMap(tree, &p->id, p);
-    
+
 
     if(tree->root->left->left == NULL ||
            tree->root->left->left->pair->value!=p) {
@@ -198,7 +198,7 @@ int insert_test2(){
         return 0;
     }else
         ok_msg("dato insertado correctamente");
-    
+
     if(tree->root->left->left != NULL &&
             (int*)tree->root->left->left->pair->key!=&p->id) {
                 err_msg("clave de dato no se guarda correctamente");
@@ -210,7 +210,7 @@ int insert_test2(){
                 err_msg("no se inicializa el padre del nuevo nodo");
                 return 0;
             }
-    
+
     if(tree->current != tree->root->left->left){
         err_msg("no se actualiza el current");
         return 0;
@@ -227,8 +227,8 @@ int minimum_test(){
         err_msg("minimum(root) retorna NULL");
         return 0;
     }
-    
-    
+
+
     if ( *((int*) n->pair->key) != 1273){
         sprintf(msg,"minimum retorna nodo con clave %d (deberia retornar 1273)",*((int*) n->pair->key));
         err_msg(msg);
@@ -261,7 +261,7 @@ int minimum_test(){
 
 int erase_test1(){//nodo sin hijos
     TreeMap * tree = initializeTree();
-    
+
     int key=1273;
     info_msg("eliminando dato con clave 1273 (nodo sin hijos)");
     eraseTreeMap(tree, &key);
@@ -275,7 +275,7 @@ int erase_test1(){//nodo sin hijos
 
 int erase_test2(){//nodo con un hijo
     TreeMap * tree = initializeTree();
-    
+
     int key=8213;
     info_msg("eliminando dato con clave 8213 (nodo con un hijo)");
     eraseTreeMap(tree, &key);
@@ -284,7 +284,7 @@ int erase_test2(){//nodo con un hijo
         err_msg("el dato no se elimino correctamente root->right!=6980");
         return 0;
     }
-    
+
 
     if(  tree->root->right->parent != tree->root){
         err_msg("falta actualizar el parent de nodo 6980");
@@ -296,7 +296,7 @@ int erase_test2(){//nodo con un hijo
 
 int erase_test3(){//nodo con dos hijos
     TreeMap * tree = initializeTree();
-    
+
     int key=5239;
     info_msg("eliminando dato con clave 5239 (nodo con dos hijos)");
     eraseTreeMap(tree, &key);
@@ -384,9 +384,9 @@ int next_test2(){ //caso1: current tiene hijo derecho
         return 0;
      }else
         ok_msg("next retorna nodo 6980");  
-    
+
     aux=nextTreeMap(tree);
-    
+
     if(aux==NULL || ((Palabra*)aux->value)->id != 8213){
         err_msg("next no retorna nodo 8213");
         return 0;
@@ -412,13 +412,13 @@ int next_test3(){ //caso2: current sin hijo derecho
     tree->current=tree->root->left->right;
 
     Pair* aux=nextTreeMap(tree);
-    
+
     if(aux==NULL || ((Palabra*)aux->value)->id != 5239){
         err_msg("next no retorna nodo 5239\n");
         return 0;
     }else
         ok_msg("next retorna nodo 5239");
-    
+
     return 1;
 }
 
@@ -496,7 +496,7 @@ int ub_test4(TreeMap* tree){
         ok_msg("upperbound de 8214 retona NULL");
 
   return 1;
-    
+
 }
 
 
@@ -504,7 +504,7 @@ int main( int argc, char *argv[] ) {
     TreeMap * tree;
     int total_score=0;
     int all_correct=1;
-    
+
     if(argc>1) test_id=atoi(argv[1]);
 
 
@@ -600,7 +600,7 @@ int main( int argc, char *argv[] ) {
     if(argc==1)
       printf("\ntotal_score: %d/70\n", total_score);
 
-    
+
 
     return 0;
 }
