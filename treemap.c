@@ -321,7 +321,7 @@ Pair * nextTreeMap(TreeMap * tree) {
             }
         else
         {
-            printf("xd2");
+            printf("xd23");
             return NULL;
         }
     }
