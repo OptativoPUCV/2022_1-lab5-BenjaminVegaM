@@ -204,9 +204,6 @@ void eraseTreeMap(TreeMap * tree, void* key){
     removeNode(tree, node);
 }
 
-
-
-
 Pair * searchTreeMap(TreeMap * tree, void* key) {
 
     TreeNode * aux = tree->root;
@@ -264,33 +261,33 @@ Pair * nextTreeMap(TreeMap * tree) {
         printf("No tiene R\n");
         if(tree->current->right != NULL)
     {
-        //printf("Tiene R\n");
+        printf("Tiene R\n");
         tree->current = minimum(tree->current->right);
     }
     else
     {
-        //printf("No tiene R\n");
+        printf("No tiene R\n");
         if(tree->current->parent != NULL)
         {
             TreeNode * aux = tree->current->parent;
 
             while(1)
             {
-                //printf("O");
+                printf("O");
                 if(aux != NULL)
                 {
-                    //printf("\nTiene padre\n");
+                    printf("\nTiene padre\n");
                     if(tree->lower_than(tree->current->pair->key, aux->pair->key) == 1)
                     {
                         break;
                     }
-                    //printf("Current > aux\n");
+                    printf("Current > aux\n");
                     aux = aux->parent;
                 }
                 else
                 {
-                    //printf("\nNo tiene padre\n");
-                    printf("xd\n");
+                    printf("\nNo tiene padre\n");
+                    
                     return NULL;
                 }
             }
@@ -298,10 +295,8 @@ Pair * nextTreeMap(TreeMap * tree) {
             }
         else
         {
-            printf("xd23");
             return NULL;
         }
     }
-    printf("xd3");
     return tree->current->pair;
 }
