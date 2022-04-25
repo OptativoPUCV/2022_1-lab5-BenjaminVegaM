@@ -163,14 +163,22 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
     return NULL;
 }
 
-
 Pair * upperBound(TreeMap * tree, void* key) {
-    
+
     tree->current = tree->root;
+
     Pair * aux = tree->current->pair;
     if(tree->current->left != NULL || tree->current->right != NULL)
     {
         aux = searchTreeMap(tree, key);
+        if(aux == NULL)
+        {
+            while(tree->lower_than(tree->current->pair->key, key) == 1)
+            {
+                aux = nextTreeMap(tree);
+            }
+            if(aux == NULL) return NULL;
+        }
         aux = tree->current->pair;
         return aux;
     }
